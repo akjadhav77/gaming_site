@@ -35,16 +35,15 @@ const Navbar = () => {
   useEffect(() => {
     if (currentScrollY === 0) {
       navContainerRef.current.classList.remove("floating-nav");
-    //   navContainerRef.current.classList.remove("bg-transparent");
+      //   navContainerRef.current.classList.remove("bg-transparent");
     }
-    // this condition means that the user is scrolling down 
+    // this condition means that the user is scrolling down
     else if (currentScrollY > lastScrollY) {
-        setIsNavVisible(false);
+      setIsNavVisible(false);
       navContainerRef.current.classList.add("floating-nav");
-    //   navContainerRef.current.classList.remove("bg-black");
-    }
-    else if (currentScrollY < lastScrollY) {
-        setIsNavVisible(true);
+      //   navContainerRef.current.classList.remove("bg-black");
+    } else if (currentScrollY < lastScrollY) {
+      setIsNavVisible(true);
       navContainerRef.current.classList.add("floating-nav");
     }
 
@@ -52,13 +51,12 @@ const Navbar = () => {
     setLastScrollY(currentScrollY);
   }, [currentScrollY, lastScrollY]);
 
-
   useEffect(() => {
     gsap.to(navContainerRef.current, {
       y: isNavVisible ? 0 : -100,
       opacity: isNavVisible ? 1 : 0,
       duration: 0.2,
-    })
+    });
   }, [isNavVisible]);
 
   return (
@@ -100,10 +98,11 @@ const Navbar = () => {
                 className="hidden"
                 loop
               />
+
               {[1, 2, 3, 4, 5].map((item) => (
                 <div
                   key={item}
-                  className={`indicator-line ${
+                  className={` indicator-line ${
                     isIndicatorActive ? "active" : ""
                   }`}
                   style={{ animationDelay: `${item * 0.1}s` }}
